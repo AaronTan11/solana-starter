@@ -17,29 +17,39 @@ umi.use(signerIdentity(signer));
         // Follow this JSON structure
         // https://docs.metaplex.com/programs/token-metadata/changelog/v1.0#json-structure
 
-        // const image = ???
-        // const metadata = {
-        //     name: "?",
-        //     symbol: "?",
-        //     description: "?",
-        //     image: "?",
-        //     attributes: [
-        //         {trait_type: '?', value: '?'}
-        //     ],
-        //     properties: {
-        //         files: [
-        //             {
-        //                 type: "image/png",
-        //                 uri: "?"
-        //             },
-        //         ]
-        //     },
-        //     creators: []
-        // };
-        // const myUri = ???
-        // console.log("Your metadata URI: ", myUri);
+        const image = "https://gateway.irys.xyz/4927LhWxVmSj3Ri4g4E6Ret7NHwaFs8yhRQzWMotYcyZ";
+        const metadata = {
+            name: "Jeff Eyes",
+            symbol: "JE",
+            description: "Jeff Eyes",
+            image: image,
+            attributes: [
+                {trait_type: 'Eyes', value: 'Jeff'}
+            ],
+            properties: {
+                files: [
+                    {
+                        type: "image/png",
+                        uri: image
+                    },
+                ]
+            },
+            creators: [
+                {
+                    address: "6DvfoE1pA8C4jKhgAA28WbDpNGQiSQewua16TvTiradz",
+                    share: 10
+                }
+            ]
+        };
+
+        
+        const myUri = await umi.uploader.uploadJson(metadata);
+        console.log("Your metadata URI: ", myUri);
     }
     catch(error) {
         console.log("Oops.. Something went wrong", error);
     }
 })();
+
+// https://arweave.net/2qW5uWaRKHFRaDpsjoegeqLJPCtKnkgHEzCKHd1FV4C4
+// https://gateway.irys.xyz/2qW5uWaRKHFRaDpsjoegeqLJPCtKnkgHEzCKHd1FV4C4

@@ -19,12 +19,17 @@ umi.use(signerIdentity(signer));
         //2. Convert image to generic file.
         //3. Upload image
 
-        // const image = ???
+        const image = await readFile("public/jeff.png");
 
-        // const [myUri] = ??? 
-        // console.log("Your image URI: ", myUri);
+        const genericFile = createGenericFile(image, "jeff.png", { contentType: "image/png" });
+        
+        const [myUri] = await umi.uploader.upload([genericFile]);
+        console.log("Your image URI: ", myUri);
     }
     catch(error) {
         console.log("Oops.. Something went wrong", error);
     }
 })();
+
+//https://arweave.net/4927LhWxVmSj3Ri4g4E6Ret7NHwaFs8yhRQzWMotYcyZ
+// https://gateway.irys.xyz/4927LhWxVmSj3Ri4g4E6Ret7NHwaFs8yhRQzWMotYcyZ
